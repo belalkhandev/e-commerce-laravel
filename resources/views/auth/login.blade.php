@@ -13,7 +13,7 @@
 				<div class="loginsignup text-center">
 					<div class="logo">
 						<a href="{{ url('/login') }}">
-							<img src="{{ $gtext['back_logo'] ? asset('public/media/'.$gtext['back_logo']) : asset('public/backend/images/backend-logo.png') }}" alt="logo">
+							<img src="{{ $gtext['back_logo'] ? asset('media/'.$gtext['back_logo']) : asset('backend/images/backend-logo.png') }}" alt="logo">
 						</a>
 					</div>
 					@if (session('message'))

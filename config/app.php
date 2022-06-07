@@ -1,7 +1,5 @@
 <?php
 
-require_once 'resources/lang/custom/locales.php';
-
 return [
 
     /*
@@ -82,8 +80,7 @@ return [
     |
     */
 
-    // 'locale' => 'en',
-    'locale' => $lan['lan'],
+    'locale' => 'en',
 
     /*
     |--------------------------------------------------------------------------
@@ -96,8 +93,7 @@ return [
     |
     */
 
-    // 'fallback_locale' => 'en',
-    'fallback_locale' => $lan['lan'],
+    'fallback_locale' => 'en',
 
     /*
     |--------------------------------------------------------------------------
