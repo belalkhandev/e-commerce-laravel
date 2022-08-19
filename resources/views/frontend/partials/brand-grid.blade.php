@@ -34,9 +34,9 @@
 				<div class="brand">
 					<span>{{ __('Brand') }} <a href="{{ route('frontend.brand', [$row->brand_id, str_slug($row->brandname)]) }}">{{ str_limit($row->brandname) }}</a></span>
 				</div>
-				<div class="brand">
+				{{-- <div class="brand">
 					<span>{{ __('Sold By') }} <a href="{{ route('frontend.stores', [$row->seller_id, str_slug($row->shop_url)]) }}">{{ str_limit($row->shop_name) }}</a></span>
-				</div>
+				</div> --}}
 			</div>
 			<div class="item-price-card">
 				@if($row->sale_price != '')

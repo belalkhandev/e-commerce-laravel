@@ -1,8 +1,8 @@
 @extends('layouts.frontend')
 
 @section('title', __('Checkout'))
-@php 
-$gtext = gtext(); 
+@php
+$gtext = gtext();
 $gtax = getTax();
 $tax_rate = $gtax['percentage'];
 config(['cart.tax' => $tax_rate]);
@@ -96,7 +96,7 @@ config(['cart.tax' => $tax_rate]);
 									<select id="country" name="country" class="form-control parsley-validated" data-required="true">
 									<option value="">{{ __('Country') }}</option>
 									@foreach($country_list as $row)
-									<option value="{{ $row->country_name }}">
+									<option value="{{ $row->country_name }}" {{ $row->country_name == "Bangladesh" ? 'selected':'' }}>
 										{{ $row->country_name }}
 									</option>
 									@endforeach
@@ -137,7 +137,7 @@ config(['cart.tax' => $tax_rate]);
 							<div class="col-md-12">
 								<div class="checkboxlist">
 									<label class="checkbox-title">
-										<input id="new_account" name="new_account" type="checkbox">{{ __('Register an account with above information?') }} 
+										<input id="new_account" name="new_account" type="checkbox">{{ __('Register an account with above information?') }}
 									</label>
 								</div>
 								@if ($errors->has('password'))
@@ -145,7 +145,7 @@ config(['cart.tax' => $tax_rate]);
 								@endif
 							</div>
 						</div>
-						
+
 						<div class="row hideclass" id="new_account_pass">
 							<div class="col-md-6">
 								<div class="mb-3">
@@ -159,7 +159,7 @@ config(['cart.tax' => $tax_rate]);
 								</div>
 							</div>
 						</div>
-						
+
 						<h5 class="mt10">{{ __('Payment Method') }}</h5>
 						<div class="row">
 							<div class="col-md-12">
@@ -183,7 +183,7 @@ config(['cart.tax' => $tax_rate]);
 									</div>
 								</div>
 								@endif
-								
+
 								@if($gtext['cod_isenable'] == 1)
 								<div class="checkboxlist">
 									<label class="checkbox-title">
@@ -192,7 +192,7 @@ config(['cart.tax' => $tax_rate]);
 								</div>
 								<p id="pay_cod" class="hideclass">{{ $gtext['cod_description'] }}</p>
 								@endif
-								
+
 								@if($gtext['bank_isenable'] == 1)
 								<div class="checkboxlist">
 									<label class="checkbox-title">
@@ -219,7 +219,7 @@ config(['cart.tax' => $tax_rate]);
 									<tbody>
 										@foreach(Cart::instance('shopping')->content() as $row)
 											@php
-											
+
 											$row->setTaxRate($tax_rate);
 											Cart::instance('shopping')->update($row->rowId, $row->qty);
 
@@ -228,15 +228,15 @@ config(['cart.tax' => $tax_rate]);
 											}else{
 												$color = 'Color: '.$row->options->color.'&nbsp;';
 											}
-					
+
 											if($row->options->size == '0'){
 												$size = '&nbsp;';
 											}else{
 												$size = 'Size: '.$row->options->size;
 											}
-											
+
 											@endphp
-											
+
 											@if($gtext['currency_position'] == 'left')
 											<tr>
 												<td>
@@ -261,10 +261,10 @@ config(['cart.tax' => $tax_rate]);
 											</tr>
 											@endif
 										@endforeach
-										
+
 										@php
 											if($gtext['currency_position'] == 'left'){
-												$ShippingFee = $gtext['currency_icon'].'<span class="shipping_fee">0</span>'; 
+												$ShippingFee = $gtext['currency_icon'].'<span class="shipping_fee">0</span>';
 												$tax = $gtext['currency_icon'].Cart::instance('shopping')->tax();
 												$total = $gtext['currency_icon'].'<span class="total_amount">'.Cart::instance('shopping')->total().'</span>';
 											}else{
@@ -273,7 +273,7 @@ config(['cart.tax' => $tax_rate]);
 												$total = '<span class="total_amount">'.Cart::instance('shopping')->total().'</span>'.$gtext['currency_icon'];
 											}
 										@endphp
-										
+
 										<tr><td colspan="2"><span class="title">{{ __('Shipping Fee') }}</span><span class="price">@php echo $ShippingFee; @endphp</span></td></tr>
 										<tr><td colspan="2"><span class="title">{{ __('Tax') }}</span><span class="price">{{ $tax }}</span></td></tr>
 										<tr><td colspan="2"><span class="total">{{ __('Total') }}</span><span class="total-price">@php echo $total; @endphp</span></td></tr>

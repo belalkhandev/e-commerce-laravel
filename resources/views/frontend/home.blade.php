@@ -125,7 +125,7 @@
 		</div>
 	</div>
 	<!-- /Banner Item/ -->
-	
+
 	<!--Brand Slider-->
 	<div class="section">
 		<div class="container">
@@ -146,7 +146,7 @@
 		</div>
 	</div>
 	<!--/Brand Slider/-->
-	
+
 	<!-- New Arrivals Section -->
 	<div class="section">
 		<div class="container">
@@ -191,9 +191,9 @@
 							<div class="brand">
 								<span>{{ __('Brand') }} <a href="{{ route('frontend.brand', [$row->brand_id, str_slug($row->brandname)]) }}">{{ str_limit($row->brandname) }}</a></span>
 							</div>
-							<div class="brand">
+							{{-- <div class="brand">
 								<span>{{ __('Sold By') }} <a href="{{ route('frontend.stores', [$row->seller_id, str_slug($row->shop_url)]) }}">{{ str_limit($row->shop_name) }}</a></span>
-							</div>
+							</div> --}}
 						</div>
 						<div class="item-price-card">
 							@if($row->sale_price != '')
@@ -217,8 +217,8 @@
 			</div>
 		</div>
 	</div>
-	<!-- /New Arrivals Section/ -->	
-	
+	<!-- /New Arrivals Section/ -->
+
 	<!-- Trending Products Section -->
 	<div class="section">
 		<div class="container">
@@ -262,9 +262,9 @@
 							<div class="brand">
 								<span>{{ __('Brand') }} <a href="{{ route('frontend.brand', [$row->brand_id, str_slug($row->brandname)]) }}">{{ str_limit($row->brandname) }}</a></span>
 							</div>
-							<div class="brand">
+							{{-- <div class="brand">
 								<span>{{ __('Sold By') }} <a href="{{ route('frontend.stores', [$row->seller_id, str_slug($row->shop_url)]) }}">{{ str_limit($row->shop_name) }}</a></span>
-							</div>
+							</div> --}}
 						</div>
 						<div class="item-price-card">
 							@if($row->sale_price != '')
@@ -339,9 +339,9 @@
 							<div class="brand">
 								<span>{{ __('Brand') }} <a href="{{ route('frontend.brand', [$row->brand_id, str_slug($row->brandname)]) }}">{{ str_limit($row->brandname) }}</a></span>
 							</div>
-							<div class="brand">
+							{{-- <div class="brand">
 								<span>{{ __('Sold By') }} <a href="{{ route('frontend.stores', [$row->seller_id, str_slug($row->shop_url)]) }}">{{ str_limit($row->shop_name) }}</a></span>
-							</div>
+							</div> --}}
 						</div>
 						<div class="item-price-card">
 							@if($row->sale_price != '')
@@ -416,9 +416,9 @@
 							<div class="brand">
 								<span>{{ __('Brand') }} <a href="{{ route('frontend.brand', [$row->brand_id, str_slug($row->brandname)]) }}">{{ str_limit($row->brandname) }}</a></span>
 							</div>
-							<div class="brand">
+							{{-- <div class="brand">
 								<span>{{ __('Sold By') }} <a href="{{ route('frontend.stores', [$row->seller_id, str_slug($row->shop_url)]) }}">{{ str_limit($row->shop_name) }}</a></span>
-							</div>
+							</div> --}}
 						</div>
 						<div class="item-price-card">
 							@if($row->sale_price != '')
@@ -449,7 +449,7 @@
 		</div>
 	</div>
 	<!-- /Available Offer Section/ -->
-	
+
 	<!--Add Part-->
 	@if($trending_data['is_publish'] == 1)
 	<div class="add-part-section">
@@ -471,7 +471,7 @@
 	</div>
 	@endif
 	<!-- /Add Part/ -->
-	
+
 	@if(Session::has('subscribePopupOff'))
 	@else
 		@if($gtext['is_subscribe_popup'] == 1)
@@ -508,26 +508,26 @@
 		var subscribePopupModal = new bootstrap.Modal(document.getElementById('subscribe_popup'), {
 		  keyboard: false
 		});
-		
+
 		subscribePopupModal.show();
-		
+
 		//Subscribe for page
 		$(document).on("click", ".newsletter_btn", function(event) {
 			event.preventDefault();
-			
+
 			var newsletterEmail = $("#newsletter_email").val();
 			var status = 'subscribed';
-			
+
 			var nletter_btn = $('.nletter_btn').html();
 			var newsletter_recordid = '';
-			
+
 			var newsletter_email = newsletterEmail.trim();
-			
+
 			if(newsletter_email == ''){
 				$('.newsletter_msg').html('<p class="text-danger">The email address field is required.</p>');
 				return;
 			}
-			
+
 			$.ajax({
 				type : 'POST',
 				url: base_url + '/frontend/saveSubscriber',
@@ -536,7 +536,7 @@
 					$('.newsletter_msg').html('');
 					$('.nletter_btn').html('<span class="spinner-border spinner-border-sm"></span> Please Wait...');
 				},
-				success: function (response) {			
+				success: function (response) {
 					var msgType = response.msgType;
 					var msg = response.msg;
 
@@ -547,7 +547,7 @@
 					} else {
 						$('.newsletter_msg').html('<p class="text-danger">'+msg+'</p>');
 					}
-					
+
 					$('.nletter_btn').html(nletter_btn);
 				}
 			});
@@ -566,4 +566,4 @@
 	@endif
 @endif
 
-@endpush	
+@endpush

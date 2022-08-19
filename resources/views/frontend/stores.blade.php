@@ -59,7 +59,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-8 offset-md-2">
-				
+
 					<div class="stores-card">
 						<div class="store-logo">
 							@if($seller_data->photo == '')
@@ -67,7 +67,7 @@
 							@else
 							<img src="{{ asset('public/media/'.$seller_data->photo) }}" alt="{{ $seller_data->shop_name }}"/>
 							@endif
-							
+
 						</div>
 						<div class="desc">
 							<h3 class="store-name">{{ $seller_data->shop_name }}</h3>
@@ -87,7 +87,7 @@
 					</div>
 				</div>
 			</div>
-			
+
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="row">
@@ -125,9 +125,9 @@
 									<div class="brand">
 										<span>{{ __('Brand') }} <a href="{{ route('frontend.brand', [$row->brand_id, str_slug($row->brandname)]) }}">{{ str_limit($row->brandname) }}</a></span>
 									</div>
-									<div class="brand">
+									{{-- <div class="brand">
 										<span>{{ __('Sold By') }} <a href="{{ route('frontend.stores', [$row->seller_id, str_slug($row->shop_url)]) }}">{{ str_limit($row->shop_name) }}</a></span>
-									</div>
+									</div> --}}
 								</div>
 								<div class="item-price-card">
 									@if($row->sale_price != '')
@@ -164,8 +164,8 @@
 						<div class="col-lg-12">
 							{{ $datalist->links() }}
 						</div>
-					</div>					
-					
+					</div>
+
 				</div>
 			</div>
 		</div>
@@ -175,4 +175,4 @@
 
 @push('scripts')
 
-@endpush	
+@endpush
